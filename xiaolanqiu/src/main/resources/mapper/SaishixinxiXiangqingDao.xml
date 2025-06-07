@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.SaishixinxiXiangqingDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.saishixinxi_id as saishixinxiId
+        ,a.qiuyuan_id as qiuyuanId
+        ,a.saishixinxi_xiangqing_uuid_number as saishixinxiXiangqingUuidNumber
+        ,a.saishixinxi_xiangqing_name as saishixinxiXiangqingName
+        ,a.saishixinxi_xiangqing_types as saishixinxiXiangqingTypes
+        ,a.saishixinxi_xiangqing_file as saishixinxiXiangqingFile
+        ,a.saishixinxi_xiangqing_defen as saishixinxiXiangqingDefen
+        ,a.saishixinxi_xiangqing_time as saishixinxiXiangqingTime
+        ,a.saishixinxi_xiangqing_content as saishixinxiXiangqingContent
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.SaishixinxiXiangqingView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+        ,qiuyuan.qiuyuan_name as qiuyuanName
+        ,qiuyuan.shangpin_shengao as shangpinShengao
+        ,qiuyuan.shangpin_tizhong as shangpinTizhong
+        ,qiuyuan.guoji_types as guojiTypes
+        ,qiuyuan.qiuyuan_uuid_number as qiuyuanUuidNumber
+        ,qiuyuan.qiuyuan_shengri as qiuyuanShengri
+        ,qiuyuan.qiuyuan_photo as qiuyuanPhoto
+        ,qiuyuan.zan_number as zanNumber
+        ,qiuyuan.cai_number as caiNumber
+        ,qiuyuan.qiuyuan_types as qiuyuanTypes
+        ,qiuyuan.rudui_time as ruduiTime
+        ,qiuyuan.qiuyuan_content as qiuyuanContent
+        ,saishixinxi.saishixinxi_uuid_number as saishixinxiUuidNumber
+        ,saishixinxi.bisia_time as bisiaTime
+        ,saishixinxi.saishixinxi_photo as saishixinxiPhoto
+        ,saishixinxi.saishixinxi_zhudui as saishixinxiZhudui
+        ,saishixinxi.saishixinxi_kedui as saishixinxiKedui
+        ,saishixinxi.saishixinxi_changdi as saishixinxiChangdi
+        ,saishixinxi.saishixinxi_content as saishixinxiContent
+        ,saishixinxi.saishixinxi_types as saishixinxiTypes
+        ,saishixinxi.shengli_types as shengliTypes
+
+        FROM saishixinxi_xiangqing  a
+        left JOIN qiuyuan qiuyuan ON a.qiuyuan_id = qiuyuan.id
+        left JOIN saishixinxi saishixinxi ON a.saishixinxi_id = saishixinxi.id
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test="params.saishixinxiId != null and params.saishixinxiId != ''">
+                and (
+                    a.saishixinxi_id = #{params.saishixinxiId}
+                )
+            </if>
+            <if test="params.qiuyuanId != null and params.qiuyuanId != ''">
+                and (
+                    a.qiuyuan_id = #{params.qiuyuanId}
+                )
+            </if>
+            <if test=" params.saishixinxiXiangqingUuidNumber != '' and params.saishixinxiXiangqingUuidNumber != null and params.saishixinxiXiangqingUuidNumber != 'null' ">
+                and a.saishixinxi_xiangqing_uuid_number like CONCAT('%',#{params.saishixinxiXiangqingUuidNumber},'%')
+            </if>
+            <if test=" params.saishixinxiXiangqingName != '' and params.saishixinxiXiangqingName != null and params.saishixinxiXiangqingName != 'null' ">
+                and a.saishixinxi_xiangqing_name like CONCAT('%',#{params.saishixinxiXiangqingName},'%')
+            </if>
+            <if test="params.saishixinxiXiangqingTypes != null and params.saishixinxiXiangqingTypes != ''">
+                and a.saishixinxi_xiangqing_types = #{params.saishixinxiXiangqingTypes}
+            </if>
+            <if test="params.saishixinxiXiangqingDefenStart != null and params.saishixinxiXiangqingDefenStart != ''">
+                <![CDATA[  and a.saishixinxi_xiangqing_defen >= #{params.saishixinxiXiangqingDefenStart}   ]]>
+            </if>
+            <if test="params.saishixinxiXiangqingDefenEnd != null and params.saishixinxiXiangqingDefenEnd != ''">
+                <![CDATA[  and a.saishixinxi_xiangqing_defen <= #{params.saishixinxiXiangqingDefenEnd}   ]]>
+            </if>
+             <if test="params.saishixinxiXiangqingDefen != null and params.saishixinxiXiangqingDefen != ''">
+                and a.saishixinxi_xiangqing_defen = #{params.saishixinxiXiangqingDefen}
+             </if>
+            <if test=" params.saishixinxiXiangqingTimeStart != '' and params.saishixinxiXiangqingTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.saishixinxi_xiangqing_time) >= UNIX_TIMESTAMP(#{params.saishixinxiXiangqingTimeStart}) ]]>
+            </if>
+            <if test=" params.saishixinxiXiangqingTimeEnd != '' and params.saishixinxiXiangqingTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.saishixinxi_xiangqing_time) <= UNIX_TIMESTAMP(#{params.saishixinxiXiangqingTimeEnd}) ]]>
+            </if>
+            <if test="params.saishixinxiXiangqingTime != null and params.saishixinxiXiangqingTime != ''">
+                and a.saishixinxi_xiangqing_time = #{params.saishixinxiXiangqingTime}
+            </if>
+            <if test=" params.saishixinxiXiangqingContent != '' and params.saishixinxiXiangqingContent != null and params.saishixinxiXiangqingContent != 'null' ">
+                and a.saishixinxi_xiangqing_content like CONCAT('%',#{params.saishixinxiXiangqingContent},'%')
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+
+                <!-- 判断球员的id不为空 -->
+            <if test=" params.qiuyuanIdNotNull != '' and params.qiuyuanIdNotNull != null and params.qiuyuanIdNotNull != 'null' ">
+                and a.qiuyuan_id IS NOT NULL
+            </if>
+            <if test="params.qiuduiId != null  and params.qiuduiId != ''">
+                and qiuyuan.qiudui_id = #{params.qiuduiId}
+            </if>
+            <if test=" params.qiuyuanName != '' and params.qiuyuanName != null and params.qiuyuanName != 'null' ">
+                and qiuyuan.qiuyuan_name like CONCAT('%',#{params.qiuyuanName},'%')
+            </if>
+            <if test="params.shangpinShengaoStart != null ">
+                <![CDATA[  and qiuyuan.shangpin_shengao >= #{params.shangpinShengaoStart}   ]]>
+            </if>
+            <if test="params.shangpinShengaoEnd != null ">
+                <![CDATA[  and qiuyuan.shangpin_shengao <= #{params.shangpinShengaoEnd}   ]]>
+            </if>
+            <if test="params.shangpinShengao != null and params.shangpinShengao != ''">
+                and a.shangpin_shengao = #{params.shangpinShengao}
+            </if>
+            <if test="params.shangpinTizhongStart != null ">
+                <![CDATA[  and qiuyuan.shangpin_tizhong >= #{params.shangpinTizhongStart}   ]]>
+            </if>
+            <if test="params.shangpinTizhongEnd != null ">
+                <![CDATA[  and qiuyuan.shangpin_tizhong <= #{params.shangpinTizhongEnd}   ]]>
+            </if>
+            <if test="params.shangpinTizhong != null and params.shangpinTizhong != ''">
+                and a.shangpin_tizhong = #{params.shangpinTizhong}
+            </if>
+            <if test="params.guojiTypes != null  and params.guojiTypes != ''">
+                and qiuyuan.guoji_types = #{params.guojiTypes}
+            </if>
+
+            <if test=" params.qiuyuanUuidNumber != '' and params.qiuyuanUuidNumber != null and params.qiuyuanUuidNumber != 'null' ">
+                and qiuyuan.qiuyuan_uuid_number like CONCAT('%',#{params.qiuyuanUuidNumber},'%')
+            </if>
+            <if test=" params.qiuyuanShengri != '' and params.qiuyuanShengri != null and params.qiuyuanShengri != 'null' ">
+                and qiuyuan.qiuyuan_shengri like CONCAT('%',#{params.qiuyuanShengri},'%')
+            </if>
+            <if test="params.zanNumberStart != null  and params.zanNumberStart != '' ">
+                <![CDATA[  and qiuyuan.zan_number >= #{params.zanNumberStart}   ]]>
+            </if>
+            <if test="params.zanNumberEnd != null  and params.zanNumberEnd != '' ">
+                <![CDATA[  and qiuyuan.zan_number <= #{params.zanNumberEnd}   ]]>
+            </if>
+            <if test="params.zanNumber != null  and params.zanNumber != '' ">
+                and qiuyuan.zan_number = #{params.zanNumber}
+            </if>
+            <if test="params.caiNumberStart != null  and params.caiNumberStart != '' ">
+                <![CDATA[  and qiuyuan.cai_number >= #{params.caiNumberStart}   ]]>
+            </if>
+            <if test="params.caiNumberEnd != null  and params.caiNumberEnd != '' ">
+                <![CDATA[  and qiuyuan.cai_number <= #{params.caiNumberEnd}   ]]>
+            </if>
+            <if test="params.caiNumber != null  and params.caiNumber != '' ">
+                and qiuyuan.cai_number = #{params.caiNumber}
+            </if>
+            <if test="params.qiuyuanTypes != null  and params.qiuyuanTypes != ''">
+                and qiuyuan.qiuyuan_types = #{params.qiuyuanTypes}
+            </if>
+
+            <if test=" params.ruduiTimeStart != '' and params.ruduiTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.rudui_time) >= UNIX_TIMESTAMP(#{params.ruduiTimeStart}) ]]>
+            </if>
+            <if test=" params.ruduiTimeEnd != '' and params.ruduiTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.rudui_time) <= UNIX_TIMESTAMP(#{params.ruduiTimeEnd}) ]]>
+            </if>
+            <if test="params.ruduiTime != null and params.ruduiTime != ''">
+                and a.rudui_time = #{params.ruduiTime}
+            </if>
+            <if test=" params.qiuyuanContent != '' and params.qiuyuanContent != null and params.qiuyuanContent != 'null' ">
+                and qiuyuan.qiuyuan_content like CONCAT('%',#{params.qiuyuanContent},'%')
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+                <!-- 判断赛事信息的id不为空 -->
+            <if test=" params.saishixinxiIdNotNull != '' and params.saishixinxiIdNotNull != null and params.saishixinxiIdNotNull != 'null' ">
+                and a.saishixinxi_id IS NOT NULL
+            </if>
+            <if test=" params.saishixinxiUuidNumber != '' and params.saishixinxiUuidNumber != null and params.saishixinxiUuidNumber != 'null' ">
+                and saishixinxi.saishixinxi_uuid_number like CONCAT('%',#{params.saishixinxiUuidNumber},'%')
+            </if>
+            <if test=" params.bisiaTimeStart != '' and params.bisiaTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(saishixinxi.bisia_time) >= UNIX_TIMESTAMP(#{params.bisiaTimeStart}) ]]>
+            </if>
+            <if test=" params.bisiaTimeEnd != '' and params.bisiaTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(saishixinxi.bisia_time) <= UNIX_TIMESTAMP(#{params.bisiaTimeEnd}) ]]>
+            </if>
+            <if test="params.bisiaTime != null and params.bisiaTime != ''">
+                and a.bisia_time = #{params.bisiaTime}
+            </if>
+            <if test=" params.saishixinxiZhudui != '' and params.saishixinxiZhudui != null and params.saishixinxiZhudui != 'null' ">
+                and saishixinxi.saishixinxi_zhudui like CONCAT('%',#{params.saishixinxiZhudui},'%')
+            </if>
+            <if test=" params.saishixinxiKedui != '' and params.saishixinxiKedui != null and params.saishixinxiKedui != 'null' ">
+                and saishixinxi.saishixinxi_kedui like CONCAT('%',#{params.saishixinxiKedui},'%')
+            </if>
+            <if test=" params.saishixinxiChangdi != '' and params.saishixinxiChangdi != null and params.saishixinxiChangdi != 'null' ">
+                and saishixinxi.saishixinxi_changdi like CONCAT('%',#{params.saishixinxiChangdi},'%')
+            </if>
+            <if test=" params.saishixinxiContent != '' and params.saishixinxiContent != null and params.saishixinxiContent != 'null' ">
+                and saishixinxi.saishixinxi_content like CONCAT('%',#{params.saishixinxiContent},'%')
+            </if>
+            <if test="params.saishixinxiTypes != null  and params.saishixinxiTypes != ''">
+                and saishixinxi.saishixinxi_types = #{params.saishixinxiTypes}
+            </if>
+
+            <if test="params.shengliTypes != null  and params.shengliTypes != ''">
+                and saishixinxi.shengli_types = #{params.shengliTypes}
+            </if>
+
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(saishixinxi.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(saishixinxi.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>

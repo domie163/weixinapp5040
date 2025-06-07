@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#c973ff",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "校篮球联赛首页",
+  "usingComponents": {
+    "uni-icons": "/components/uni-ui/lib/uni-icons/uni-icons"
+  }
+}

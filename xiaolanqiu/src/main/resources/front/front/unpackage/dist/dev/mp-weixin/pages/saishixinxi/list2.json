@@ -1,0 +1,8 @@
+{
+  "navigationBarBackgroundColor": "#c973ff",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "我的赛事信息",
+  "usingComponents": {
+    "mescroll-uni": "/components/mescroll-uni/mescroll-uni"
+  }
+}

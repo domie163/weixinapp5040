@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.QiuyuanCollectionDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.qiuyuan_id as qiuyuanId
+        ,a.yonghu_id as yonghuId
+        ,a.qiuyuan_collection_types as qiuyuanCollectionTypes
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.QiuyuanCollectionView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+        ,qiuyuan.qiuyuan_name as qiuyuanName
+        ,qiuyuan.shangpin_shengao as shangpinShengao
+        ,qiuyuan.shangpin_tizhong as shangpinTizhong
+        ,qiuyuan.guoji_types as guojiTypes
+        ,qiuyuan.qiuyuan_uuid_number as qiuyuanUuidNumber
+        ,qiuyuan.qiuyuan_shengri as qiuyuanShengri
+        ,qiuyuan.qiuyuan_photo as qiuyuanPhoto
+        ,qiuyuan.zan_number as zanNumber
+        ,qiuyuan.cai_number as caiNumber
+        ,qiuyuan.qiuyuan_types as qiuyuanTypes
+        ,qiuyuan.rudui_time as ruduiTime
+        ,qiuyuan.qiuyuan_content as qiuyuanContent
+        ,yonghu.yonghu_name as yonghuName
+        ,yonghu.yonghu_phone as yonghuPhone
+        ,yonghu.yonghu_id_number as yonghuIdNumber
+        ,yonghu.yonghu_photo as yonghuPhoto
+        ,yonghu.yonghu_email as yonghuEmail
+        ,yonghu.jinyong_types as jinyongTypes
+
+        FROM qiuyuan_collection  a
+        left JOIN qiuyuan qiuyuan ON a.qiuyuan_id = qiuyuan.id
+        left JOIN yonghu yonghu ON a.yonghu_id = yonghu.id
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test="params.qiuyuanId != null and params.qiuyuanId != ''">
+                and (
+                    a.qiuyuan_id = #{params.qiuyuanId}
+                )
+            </if>
+            <if test="params.yonghuId != null and params.yonghuId != ''">
+                and (
+                    a.yonghu_id = #{params.yonghuId}
+                )
+            </if>
+            <if test="params.qiuyuanCollectionTypes != null and params.qiuyuanCollectionTypes != ''">
+                and a.qiuyuan_collection_types = #{params.qiuyuanCollectionTypes}
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+
+                <!-- 判断球员的id不为空 -->
+            <if test=" params.qiuyuanIdNotNull != '' and params.qiuyuanIdNotNull != null and params.qiuyuanIdNotNull != 'null' ">
+                and a.qiuyuan_id IS NOT NULL
+            </if>
+            <if test="params.qiuduiId != null  and params.qiuduiId != ''">
+                and qiuyuan.qiudui_id = #{params.qiuduiId}
+            </if>
+            <if test=" params.qiuyuanName != '' and params.qiuyuanName != null and params.qiuyuanName != 'null' ">
+                and qiuyuan.qiuyuan_name like CONCAT('%',#{params.qiuyuanName},'%')
+            </if>
+            <if test="params.shangpinShengaoStart != null ">
+                <![CDATA[  and qiuyuan.shangpin_shengao >= #{params.shangpinShengaoStart}   ]]>
+            </if>
+            <if test="params.shangpinShengaoEnd != null ">
+                <![CDATA[  and qiuyuan.shangpin_shengao <= #{params.shangpinShengaoEnd}   ]]>
+            </if>
+            <if test="params.shangpinShengao != null and params.shangpinShengao != ''">
+                and a.shangpin_shengao = #{params.shangpinShengao}
+            </if>
+            <if test="params.shangpinTizhongStart != null ">
+                <![CDATA[  and qiuyuan.shangpin_tizhong >= #{params.shangpinTizhongStart}   ]]>
+            </if>
+            <if test="params.shangpinTizhongEnd != null ">
+                <![CDATA[  and qiuyuan.shangpin_tizhong <= #{params.shangpinTizhongEnd}   ]]>
+            </if>
+            <if test="params.shangpinTizhong != null and params.shangpinTizhong != ''">
+                and a.shangpin_tizhong = #{params.shangpinTizhong}
+            </if>
+            <if test="params.guojiTypes != null  and params.guojiTypes != ''">
+                and qiuyuan.guoji_types = #{params.guojiTypes}
+            </if>
+
+            <if test=" params.qiuyuanUuidNumber != '' and params.qiuyuanUuidNumber != null and params.qiuyuanUuidNumber != 'null' ">
+                and qiuyuan.qiuyuan_uuid_number like CONCAT('%',#{params.qiuyuanUuidNumber},'%')
+            </if>
+            <if test=" params.qiuyuanShengri != '' and params.qiuyuanShengri != null and params.qiuyuanShengri != 'null' ">
+                and qiuyuan.qiuyuan_shengri like CONCAT('%',#{params.qiuyuanShengri},'%')
+            </if>
+            <if test="params.zanNumberStart != null  and params.zanNumberStart != '' ">
+                <![CDATA[  and qiuyuan.zan_number >= #{params.zanNumberStart}   ]]>
+            </if>
+            <if test="params.zanNumberEnd != null  and params.zanNumberEnd != '' ">
+                <![CDATA[  and qiuyuan.zan_number <= #{params.zanNumberEnd}   ]]>
+            </if>
+            <if test="params.zanNumber != null  and params.zanNumber != '' ">
+                and qiuyuan.zan_number = #{params.zanNumber}
+            </if>
+            <if test="params.caiNumberStart != null  and params.caiNumberStart != '' ">
+                <![CDATA[  and qiuyuan.cai_number >= #{params.caiNumberStart}   ]]>
+            </if>
+            <if test="params.caiNumberEnd != null  and params.caiNumberEnd != '' ">
+                <![CDATA[  and qiuyuan.cai_number <= #{params.caiNumberEnd}   ]]>
+            </if>
+            <if test="params.caiNumber != null  and params.caiNumber != '' ">
+                and qiuyuan.cai_number = #{params.caiNumber}
+            </if>
+            <if test="params.qiuyuanTypes != null  and params.qiuyuanTypes != ''">
+                and qiuyuan.qiuyuan_types = #{params.qiuyuanTypes}
+            </if>
+
+            <if test=" params.ruduiTimeStart != '' and params.ruduiTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.rudui_time) >= UNIX_TIMESTAMP(#{params.ruduiTimeStart}) ]]>
+            </if>
+            <if test=" params.ruduiTimeEnd != '' and params.ruduiTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.rudui_time) <= UNIX_TIMESTAMP(#{params.ruduiTimeEnd}) ]]>
+            </if>
+            <if test="params.ruduiTime != null and params.ruduiTime != ''">
+                and a.rudui_time = #{params.ruduiTime}
+            </if>
+            <if test=" params.qiuyuanContent != '' and params.qiuyuanContent != null and params.qiuyuanContent != 'null' ">
+                and qiuyuan.qiuyuan_content like CONCAT('%',#{params.qiuyuanContent},'%')
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(qiuyuan.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+                <!-- 判断用户的id不为空 -->
+            <if test=" params.yonghuIdNotNull != '' and params.yonghuIdNotNull != null and params.yonghuIdNotNull != 'null' ">
+                and a.yonghu_id IS NOT NULL
+            </if>
+            <if test=" params.yonghuName != '' and params.yonghuName != null and params.yonghuName != 'null' ">
+                and yonghu.yonghu_name like CONCAT('%',#{params.yonghuName},'%')
+            </if>
+            <if test=" params.yonghuPhone != '' and params.yonghuPhone != null and params.yonghuPhone != 'null' ">
+                and yonghu.yonghu_phone like CONCAT('%',#{params.yonghuPhone},'%')
+            </if>
+            <if test=" params.yonghuIdNumber != '' and params.yonghuIdNumber != null and params.yonghuIdNumber != 'null' ">
+                and yonghu.yonghu_id_number like CONCAT('%',#{params.yonghuIdNumber},'%')
+            </if>
+            <if test=" params.yonghuEmail != '' and params.yonghuEmail != null and params.yonghuEmail != 'null' ">
+                and yonghu.yonghu_email like CONCAT('%',#{params.yonghuEmail},'%')
+            </if>
+            <if test="params.jinyongTypes != null  and params.jinyongTypes != ''">
+                and yonghu.jinyong_types = #{params.jinyongTypes}
+            </if>
+
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>

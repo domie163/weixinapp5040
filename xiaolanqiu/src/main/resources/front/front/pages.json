@@ -1,0 +1,454 @@
+{
+	"pages": [{
+		"path": "pages/login/login",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "登录"
+		}
+	},{
+		"path": "pages/register/register",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "注册"
+		}
+	},{
+		"path": "pages/forget/forget",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "忘记密码"
+		}
+		},
+		{
+		"path": "pages/changepassword/changepassword",
+		"style": {
+		"navigationBarBackgroundColor": "#c973ff",
+		"navigationBarTextStyle": "white",
+		"navigationBarTitleText": "修改密码"
+			}
+		},
+		{
+		"path": "pages/center/center",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的"
+		}
+	},{
+		"path": "pages/user-info/userinfo",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户信息"
+		}
+	}
+
+	,{
+		"path": "pages/gonggao/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "公告展示"
+		}
+	},{
+		"path": "pages/gonggao/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的公告"
+		}
+	},{
+		"path": "pages/gonggao/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "公告添加/修改"
+		}
+	},{
+		"path": "pages/gonggao/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "公告详情"
+		}
+	}
+	,{
+		"path": "pages/qiudui/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队展示"
+		}
+	},{
+		"path": "pages/qiudui/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的球队"
+		}
+	},{
+		"path": "pages/qiudui/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队添加/修改"
+		}
+	},{
+		"path": "pages/qiudui/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队详情"
+		}
+	}
+	,{
+		"path": "pages/qiuduiCollection/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队收藏展示"
+		}
+	},{
+		"path": "pages/qiuduiCollection/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的球队收藏"
+		}
+	},{
+		"path": "pages/qiuduiCollection/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队收藏添加/修改"
+		}
+	},{
+		"path": "pages/qiuduiCollection/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队收藏详情"
+		}
+	}
+	,{
+		"path": "pages/qiuduiLiuyan/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队留言展示"
+		}
+	},{
+		"path": "pages/qiuduiLiuyan/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的球队留言"
+		}
+	},{
+		"path": "pages/qiuduiLiuyan/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队留言添加/修改"
+		}
+	},{
+		"path": "pages/qiuduiLiuyan/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球队留言详情"
+		}
+	}
+	,{
+		"path": "pages/qiuyuan/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员展示"
+		}
+	},{
+		"path": "pages/qiuyuan/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的球员"
+		}
+	},{
+		"path": "pages/qiuyuan/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员添加/修改"
+		}
+	},{
+		"path": "pages/qiuyuan/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员详情"
+		}
+	}
+	,{
+		"path": "pages/qiuyuanCollection/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员收藏展示"
+		}
+	},{
+		"path": "pages/qiuyuanCollection/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的球员收藏"
+		}
+	},{
+		"path": "pages/qiuyuanCollection/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员收藏添加/修改"
+		}
+	},{
+		"path": "pages/qiuyuanCollection/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员收藏详情"
+		}
+	}
+	,{
+		"path": "pages/qiuyuanLiuyan/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员留言展示"
+		}
+	},{
+		"path": "pages/qiuyuanLiuyan/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的球员留言"
+		}
+	},{
+		"path": "pages/qiuyuanLiuyan/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员留言添加/修改"
+		}
+	},{
+		"path": "pages/qiuyuanLiuyan/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "球员留言详情"
+		}
+	}
+	,{
+		"path": "pages/saishixinxi/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事信息展示"
+		}
+	},{
+		"path": "pages/saishixinxi/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的赛事信息"
+		}
+	},{
+		"path": "pages/saishixinxi/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事信息添加/修改"
+		}
+	},{
+		"path": "pages/saishixinxi/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事信息详情"
+		}
+	}
+	,{
+		"path": "pages/saishixinxiCollection/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事信息收藏展示"
+		}
+	},{
+		"path": "pages/saishixinxiCollection/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的赛事信息收藏"
+		}
+	},{
+		"path": "pages/saishixinxiCollection/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事信息收藏添加/修改"
+		}
+	},{
+		"path": "pages/saishixinxiCollection/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事信息收藏详情"
+		}
+	}
+	,{
+		"path": "pages/saishixinxiXiangqing/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事详情展示"
+		}
+	},{
+		"path": "pages/saishixinxiXiangqing/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的赛事详情"
+		}
+	},{
+		"path": "pages/saishixinxiXiangqing/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事详情添加/修改"
+		}
+	},{
+		"path": "pages/saishixinxiXiangqing/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事详情详情"
+		}
+	}
+	,{
+		"path": "pages/saishixinxiXiangqingCollection/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事详情收藏展示"
+		}
+	},{
+		"path": "pages/saishixinxiXiangqingCollection/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的赛事详情收藏"
+		}
+	},{
+		"path": "pages/saishixinxiXiangqingCollection/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事详情收藏添加/修改"
+		}
+	},{
+		"path": "pages/saishixinxiXiangqingCollection/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "赛事详情收藏详情"
+		}
+	}
+	,{
+		"path": "pages/yonghu/list",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户展示"
+		}
+	},{
+		"path": "pages/yonghu/list2",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "我的用户"
+		}
+	},{
+		"path": "pages/yonghu/add-or-update",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户添加/修改"
+		}
+	},{
+		"path": "pages/yonghu/detail",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "用户详情"
+		}
+	}
+			,{
+		"path": "pages/index/index",
+		"style": {
+			"navigationBarBackgroundColor": "#c973ff",
+			"navigationBarTextStyle": "white",
+			"navigationBarTitleText": "校篮球联赛首页"
+		}
+	}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "校篮球联赛",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#FFFFFF",
+		"selectedColor": "#fff",
+		"borderStyle": "black",
+		"backgroundColor": "#aebaf8",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"iconPath": "static/tabs/index.png",
+				"selectedIconPath": "static/tabs/index1.png",
+				"text": "首页"
+			}
+			,{
+				"pagePath": "pages/qiudui/list",
+				"iconPath": "static/tabs/type.png",
+				"selectedIconPath": "static/tabs/type1.png",
+				"text": "球队"
+			}
+			,{
+				"pagePath": "pages/qiuyuan/list",
+				"iconPath": "static/tabs/type.png",
+				"selectedIconPath": "static/tabs/type1.png",
+				"text": "球员"
+			}
+			,{
+				"pagePath": "pages/saishixinxi/list",
+				"iconPath": "static/tabs/type.png",
+				"selectedIconPath": "static/tabs/type1.png",
+				"text": "赛事信息"
+			}
+			,{
+				"pagePath": "pages/center/center",
+				"iconPath": "static/tabs/mine.png",
+				"selectedIconPath": "static/tabs/mine1.png",
+				"text": "我的"
+			}
+		]
+	}
+	// "permission": {
+	// 	"scope.userLocation": {
+	// 		"desc": ""
+	// 	}
+	// },
+	// "requiredPrivateInfos": ["getLocation", "chooseLocation"]
+}
